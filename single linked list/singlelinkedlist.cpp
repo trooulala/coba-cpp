@@ -9,7 +9,7 @@ struct Mobil {
   Mobil *next;
 };
 
-Mobil *head, *tail, *curr, *newNode;
+Mobil *head, *tail, *curr, *newNode, *del;
 
 // membuat single linked list
 void CreateLinkedList(string merek, string jenis, string bahan_bakar, int velg, int tahun){
@@ -47,6 +47,12 @@ void AddTail(string merek, string jenis, string bahan_bakar, int velg, int tahun
   tail = newNode;
 }
 
+// remove Head
+void RemoveHead(){
+  del = head;
+  head = head -> next;
+  delete del;
+}
 
 // mengeprint hasil single linked list
 void PrintSingleLInkedLIst() {
@@ -76,6 +82,12 @@ int main() {
   cout << "\n\nSetelah Tail Ditambahkan" << endl;
 
   AddTail("Suzuki Vitara", "SUV", "Diesel", 16, 1998);
+
+  PrintSingleLInkedLIst();
+
+  cout << "\n\nSetelah head dihpaus" << endl;
+
+  RemoveHead();
 
   PrintSingleLInkedLIst();
 
