@@ -23,6 +23,7 @@ void CreateLinkedList(string merek, string jenis, string bahan_bakar, int velg, 
   tail = head;
 }
 
+// menambahkan node didepan head kemudian dijadikan head
 void MoveHead(string merek, string jenis, string bahan_bakar, int velg, int tahun){
   newNode = new Mobil();
   newNode -> merek = merek;
@@ -32,8 +33,20 @@ void MoveHead(string merek, string jenis, string bahan_bakar, int velg, int tahu
   newNode -> tahun = tahun;
   newNode -> next = head;
   head = newNode;
-
 }
+
+void AddTail(string merek, string jenis, string bahan_bakar, int velg, int tahun){
+  newNode = new Mobil();
+  newNode -> merek = merek;
+  newNode -> jenis = jenis;
+  newNode -> bahan_bakar = bahan_bakar;
+  newNode -> velg = velg;
+  newNode -> tahun = tahun;
+  newNode -> next = NULL;
+  tail -> next = newNode;
+  tail = newNode;
+}
+
 
 // mengeprint hasil single linked list
 void PrintSingleLInkedLIst() {
@@ -57,6 +70,12 @@ int main() {
   cout << "\n\nSetelah Head Digeser" << endl;
 
   MoveHead("Honda Odyssey", "MPV", "Bensin", 17, 1994); //menggeser head sebelumnya
+
+  PrintSingleLInkedLIst();
+
+  cout << "\n\nSetelah Tail Ditambahkan" << endl;
+
+  AddTail("Suzuki Vitara", "SUV", "Diesel", 16, 1998);
 
   PrintSingleLInkedLIst();
 
