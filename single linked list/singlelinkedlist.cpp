@@ -66,6 +66,24 @@ void RemoveTail() {
   delete del;
 }
 
+// mengubah Head
+void ChangeHead(string merek, string jenis, string bahan_bakar, int velg, int tahun) {
+  head -> merek = merek;
+  head -> jenis = jenis;
+  head -> bahan_bakar = bahan_bakar;
+  head -> velg = velg;
+  head -> tahun = tahun;
+}
+
+// mengubah tail
+void ChangeTail(string merek, string jenis, string bahan_bakar, int velg, int tahun) {
+  tail -> merek = merek;
+  tail -> jenis = jenis;
+  tail -> bahan_bakar = bahan_bakar;
+  tail -> velg = velg;
+  tail -> tahun = tahun;
+}
+
 // mengeprint hasil single linked list
 void PrintSingleLInkedLIst() {
   curr = head;
