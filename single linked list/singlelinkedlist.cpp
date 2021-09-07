@@ -35,6 +35,26 @@ void MoveHead(string merek, string jenis, string bahan_bakar, int velg, int tahu
   head = newNode;
 }
 
+// menambahkan node baru di tengah
+void addMiddle(string merek, string jenis, string bahan_bakar, int velg, int tahun, int posisi) {
+  newNode = new Mobil();
+  newNode -> merek = merek;
+  newNode -> jenis = jenis;
+  newNode -> bahan_bakar = bahan_bakar;
+  newNode -> velg = velg;
+  newNode -> tahun = tahun;
+
+  // tranversing
+  curr = head;
+  int num = 1;
+  while (num < posisi-1) {
+    curr = curr -> next;
+    num++;
+  }
+  newNode -> next = curr -> next;
+  curr -> next = newNode;
+}
+
 void AddTail(string merek, string jenis, string bahan_bakar, int velg, int tahun){
   newNode = new Mobil();
   newNode -> merek = merek;
@@ -121,10 +141,13 @@ int main() {
 
   PrintSingleLInkedLIst();
 
-  cout << "\n\nSetelah tail dihpaus" << endl;
+  cout << "\n\n\n" << endl;
 
-  RemoveTail();
+  AddTail("Honda Odyssey", "MPV", "Bensin", 17, 1994);
+
+  cout << "\n\nSetelah ditambah di tengah" << endl;
+
+  addMiddle("Mitsubishi Triton", "Pickup Truck", "Diesel", 16, 2019, 2);
 
   PrintSingleLInkedLIst();
-
 }
