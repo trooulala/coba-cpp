@@ -122,8 +122,21 @@ void ChangeTail(string merek, string jenis, string bahan_bakar, int velg, int ta
   tail -> tahun = tahun;
 }
 
+// menghitung jumlah linked CreateLinkedList
+int countSinleLL() {
+  curr = head;
+  int jumlah = 0;
+  while (curr != 0) {
+    jumlah++;
+    curr = curr -> next;
+  }
+  return jumlah;
+}
+
 // mengeprint hasil single linked list
 void PrintSingleLInkedLIst() {
+  cout << "Jumlah data: " << countSinleLL() << endl;
+
   curr = head;
   while (curr != NULL) {
     cout << "Merek Mobil: " << curr -> merek << endl;
