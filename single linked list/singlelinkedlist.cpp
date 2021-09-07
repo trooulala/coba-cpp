@@ -54,6 +54,18 @@ void RemoveHead(){
   delete del;
 }
 
+// remove tail
+void RemoveTail() {
+  del = tail;
+  curr = head;
+  while (curr != tail){
+    curr = curr -> next;
+  }
+  tail = curr;
+  tail = NULL;
+  delete del;
+}
+
 // mengeprint hasil single linked list
 void PrintSingleLInkedLIst() {
   curr = head;
@@ -91,5 +103,10 @@ int main() {
 
   PrintSingleLInkedLIst();
 
+  cout << "\n\nSetelah tail dihpaus" << endl;
+
+  RemoveTail();
+
+  PrintSingleLInkedLIst();
 
 }
