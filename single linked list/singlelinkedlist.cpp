@@ -9,7 +9,7 @@ struct Mobil {
   Mobil *next;
 };
 
-Mobil *head, *tail, *curr, *newNode, *del;
+Mobil *head, *tail, *curr, *newNode, *del, *before;
 
 // membuat single linked list
 void CreateLinkedList(string merek, string jenis, string bahan_bakar, int velg, int tahun){
@@ -71,6 +71,24 @@ void AddTail(string merek, string jenis, string bahan_bakar, int velg, int tahun
 void RemoveHead(){
   del = head;
   head = head -> next;
+  delete del;
+}
+
+// remove middle
+void RemoveMiddle(int posisi) {
+  int num = 1;
+  curr = head;
+  while (num <= posisi) {
+    if (num == posisi - 1) {
+      before = curr;
+    }
+    if (num == posisi) {
+      del = curr;
+    }
+    curr = curr -> next;
+    num++;
+  }
+  before -> next = curr;
   delete del;
 }
 
@@ -148,6 +166,12 @@ int main() {
   cout << "\n\nSetelah ditambah di tengah" << endl;
 
   addMiddle("Mitsubishi Triton", "Pickup Truck", "Diesel", 16, 2019, 2);
+
+  PrintSingleLInkedLIst();
+
+  cout << "\n\nSetelah node tengah di hapus" << endl;
+
+  RemoveMiddle(3);
 
   PrintSingleLInkedLIst();
 }
