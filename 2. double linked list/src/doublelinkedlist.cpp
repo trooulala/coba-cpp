@@ -61,6 +61,15 @@ void behindTail(string merek, string jenis, string bahan_bakar, int velg, int ta
   }
 }
 
+// menghapus node yang paling depan / head
+void delHead() {
+  del = head;
+  head = head -> next;
+  head -> prev = NULL;
+  delete del;
+}
+
+
 // print double linked list
 void printDoubleLL() {
   // cout << "Jumlah data: " << countSinleLL() << endl;
@@ -92,6 +101,7 @@ int main() {
   behindTail("Mitsubishi Outlander", "SUV", "Bensin", 18, 2012);
   printDoubleLL();
 
-
+  delHead();
+  printDoubleLL();
 
 }
