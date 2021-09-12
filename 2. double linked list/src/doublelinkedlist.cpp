@@ -45,7 +45,7 @@ void inFrontHead(string merek, string jenis, string bahan_bakar, int velg, int t
 
 // menambahkan node di belakang tail
 void behindTail(string merek, string jenis, string bahan_bakar, int velg, int tahun) {
-  if (tail == NULL) {
+  if (head == NULL) {
     cout << "Double Linked List tidak tersedia" << endl;
   } else {
     newNode = new Mobil();
@@ -56,7 +56,7 @@ void behindTail(string merek, string jenis, string bahan_bakar, int velg, int ta
     newNode -> tahun = tahun;
     newNode -> prev = tail;
     newNode -> next = NULL;
-    tail -> prev = newNode;
+    tail -> next = newNode;
     tail = newNode;
   }
 }
@@ -91,5 +91,7 @@ int main() {
 
   behindTail("Mitsubishi Outlander", "SUV", "Bensin", 18, 2012);
   printDoubleLL();
+
+
 
 }
