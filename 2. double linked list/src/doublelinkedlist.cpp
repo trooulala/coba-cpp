@@ -69,6 +69,14 @@ void delHead() {
   delete del;
 }
 
+// menghapus node paling belakang
+void delTail() {
+  del = tail;
+  tail = tail -> prev;
+  tail -> next = NULL;
+  delete del;
+}
+
 
 // print double linked list
 void printDoubleLL() {
@@ -102,6 +110,9 @@ int main() {
   printDoubleLL();
 
   delHead();
+  printDoubleLL();
+
+  delTail();
   printDoubleLL();
 
 }
