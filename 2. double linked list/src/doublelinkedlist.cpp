@@ -25,6 +25,22 @@ void createDoubleLL(string merek, string jenis, string bahan_bakar, int velg, in
   tail = head;
 }
 
+int countDoubleLL() {
+  // cout << "Jumlah data: " << countSinleLL() << endl;
+  if (head == NULL) {
+    cout << "Double Linked List tidak tersedia" << endl;
+  } else {
+    curr = head;
+    int jumlah = 0;
+    while (curr != NULL) {
+      // step
+      curr = curr -> next;
+      jumlah++;
+    }
+    return jumlah;
+  }
+}
+
 // menambahkan node di depan head
 void inFrontHead(string merek, string jenis, string bahan_bakar, int velg, int tahun){
   if (head == NULL) {
@@ -45,27 +61,34 @@ void inFrontHead(string merek, string jenis, string bahan_bakar, int velg, int t
 
 // menambahkkan node ditengah
 void addMiddle(string merek, string jenis, string bahan_bakar, int velg, int tahun, int posisi) {
-  newNode = new Mobil();
-  newNode -> merek = merek;
-  newNode -> jenis = jenis;
-  newNode -> bahan_bakar = bahan_bakar;
-  newNode -> velg = velg;
-  newNode -> tahun = tahun;
+  if (head == NULL) {
+    cout << "Double linked list tidak tersedia" << endl;
+  } else if (posisi == 1) {
+    cout << "Posisi 1 adalah head, bukan tengah" << endl;
+  } else if (posisi > countDoubleLL()) {
+    cout << "Posisi diluar jangkauan" << endl;
+  } else {
+    newNode = new Mobil();
+    newNode -> merek = merek;
+    newNode -> jenis = jenis;
+    newNode -> bahan_bakar = bahan_bakar;
+    newNode -> velg = velg;
+    newNode -> tahun = tahun;
 
-  // tranversing
-  curr = head;
-  int num = 1;
-  while (num < posisi-1) {
-    curr = curr -> next;
-    num++;
+    // tranversing
+    curr = head;
+    int num = 1;
+    while (num < posisi-1) {
+      curr = curr -> next;
+      num++;
+    }
+    after = curr -> next;
+    newNode -> prev = curr;
+    newNode -> next = after;
+    curr -> next = newNode;
+    after -> prev = newNode;
+    }
   }
-
-  after = curr -> next;
-  newNode -> prev = curr;
-  newNode -> next = after;
-  curr -> next = newNode;
-  after -> prev = newNode;
-}
 
 // menambahkan node di belakang tail
 void behindTail(string merek, string jenis, string bahan_bakar, int velg, int tahun) {
@@ -100,7 +123,6 @@ void delTail() {
   tail -> next = NULL;
   delete del;
 }
-
 
 // print double linked list
 void printDoubleLL() {
