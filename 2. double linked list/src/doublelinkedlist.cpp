@@ -116,6 +116,29 @@ void delHead() {
   delete del;
 }
 
+void removeMiddle(int posisi){
+  if (head == NULL) {
+    cout << "Double Linked List tidak tersedia" << endl;
+  } else {
+    if (posisi == 1 || posisi == countDoubleLL()){
+      cout << "Posisi yang dipilih tidak berada ditengah" << endl;
+    } else if (posisi > countDoubleLL()) {
+      cout << "Diluar jangkauan" << endl;
+    } else {
+      int num = 1;
+      curr = head;
+      while (num < posisi - 1) {
+        curr = curr -> next;
+        num ++;
+      }
+      del = curr -> next;
+      after = del -> next;
+      curr -> next = after;
+      after -> prev = curr;
+    }
+  }
+}
+
 // menghapus node paling belakang
 void delTail() {
   del = tail;
@@ -166,6 +189,9 @@ int main() {
   printDoubleLL();
 
   addMiddle("Suzuki Vitara", "SUV", "Diesel", 16, 1998, 2);
+  printDoubleLL();
+
+  removeMiddle(3);
   printDoubleLL();
 
 }
