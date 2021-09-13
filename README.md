@@ -18,7 +18,10 @@ apa itu double linked list?
   * linked list yang memiliki 2 variabel pointer
   * setiap node menunuk ke arah prev dan next
 
+apa itu circular linked list?
+  * sekumpulan node yang tidak memiliki nilai NULL
 
 
-                                                                                                                            
+
+
                                                                                           source: StudyWithStudent
