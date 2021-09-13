@@ -10,7 +10,7 @@ struct Mobil {
 };
 
 // Pointer global
-Mobil *head, *tail, *curr, *newNode, *del;
+Mobil *head, *tail, *curr, *newNode, *del, *after, *before;
 
 // buat double linked list
 void createDoubleLL(string merek, string jenis, string bahan_bakar, int velg, int tahun) {
@@ -41,6 +41,30 @@ void inFrontHead(string merek, string jenis, string bahan_bakar, int velg, int t
     head -> prev = newNode;
     head = newNode;
   }
+}
+
+// menambahkkan node ditengah
+void addMiddle(string merek, string jenis, string bahan_bakar, int velg, int tahun, int posisi) {
+  newNode = new Mobil();
+  newNode -> merek = merek;
+  newNode -> jenis = jenis;
+  newNode -> bahan_bakar = bahan_bakar;
+  newNode -> velg = velg;
+  newNode -> tahun = tahun;
+
+  // tranversing
+  curr = head;
+  int num = 1;
+  while (num < posisi-1) {
+    curr = curr -> next;
+    num++;
+  }
+
+  after = curr -> next;
+  newNode -> prev = curr;
+  newNode -> next = after;
+  curr -> next = newNode;
+  after -> prev = newNode;
 }
 
 // menambahkan node di belakang tail
@@ -101,18 +125,25 @@ void printDoubleLL() {
 
 int main() {
   createDoubleLL("Nissan X Trail", "SUV", "Bensin", 19, 2000);
-  printDoubleLL();
+  // printDoubleLL();
 
   inFrontHead("Honda Odyssey", "MPV", "Bensin", 17, 1994);
-  printDoubleLL();
+  // printDoubleLL();
 
+  behindTail("Mitsubishi Outlander", "SUV", "Bensin", 18, 2012);
+  // printDoubleLL();
+
+  delHead();
+  // printDoubleLL();
+
+  delTail();
+  // printDoubleLL();
+
+  behindTail("Honda Odyssey", "MPV", "Bensin", 17, 1994);
   behindTail("Mitsubishi Outlander", "SUV", "Bensin", 18, 2012);
   printDoubleLL();
 
-  delHead();
-  printDoubleLL();
-
-  delTail();
+  addMiddle("Suzuki Vitara", "SUV", "Diesel", 16, 1998, 2);
   printDoubleLL();
 
 }
