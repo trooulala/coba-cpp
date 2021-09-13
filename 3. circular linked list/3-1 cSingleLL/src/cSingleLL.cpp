@@ -22,8 +22,22 @@ void createcSingle(string merek, string jenis, string bahan_bakar, int velg, int
   tail -> next = head;
 }
 
+// menambahkan node di depan head
+void addInFront(string merek, string jenis, string bahan_bakar, int velg, int tahun) {
+  newNode = new Mobil();
+  newNode -> merek = merek;
+  newNode -> jenis = jenis;
+  newNode -> bahan_bakar = bahan_bakar;
+  newNode -> velg = velg;
+  newNode -> tahun = tahun;
+  newNode -> next = head;
+  tail -> next = newNode;
+  head = newNode;
+}
+
+// menampilkan node
 void printcSingle() {
-  cout << "Daftar Mobil" << endl;
+  cout << "\n\tDaftar Mobil" << endl;
   curr = head;
   while (curr -> next != head) {
     cout << "Merek Mobil: " << curr -> merek << endl;
@@ -46,5 +60,8 @@ void printcSingle() {
 
 int main() {
   createcSingle("BMW 4 Series Coupe", "Coupe", "Bensin", 19, 2018);
+  printcSingle();
+
+  addInFront("Suzuki Vitara", "SUV", "Diesel", 16, 1997);
   printcSingle();
 }
